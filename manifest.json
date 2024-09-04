@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Image Replacer",
+  "version": "1.0",
+  "description": "Replace all images with a specific image.",
+  "permissions": ["scripting", "activeTab"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["imgs/1.jpg", "imgs/favicon.ico"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
