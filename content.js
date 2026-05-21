@@ -58,6 +58,10 @@
     return options.imageUrl || EXTENSION_IMAGE_URL;
   }
 
+  function escapeCssString(value) {
+    return String(value).replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, '\\A ');
+  }
+
   function markAsReplaced(element) {
     element.setAttribute(REPLACED_ATTR, 'true');
   }
@@ -198,11 +202,11 @@
       return;
     }
 
-    const replacementUrl = getReplacementImageUrl();
+    const replacementUrl = escapeCssString(getReplacementImageUrl());
     const css = `
       *::before,
       *::after {
-        background-image: url("${CSS.escape(replacementUrl)}") !important;
+        background-image: url("${replacementUrl}") !important;
       }
     `;
 
