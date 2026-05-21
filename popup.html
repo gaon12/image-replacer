@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Image Replacer</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="popup">
+      <header class="header">
+        <div>
+          <h1>Image Replacer</h1>
+          <p>웹페이지 이미지를 원하는 이미지로 교체합니다.</p>
+        </div>
+      </header>
+
+      <form id="settings-form" class="settings-form">
+        <label class="switch-row">
+          <span>
+            <strong>확장 기능 사용</strong>
+            <small>꺼두면 현재 설정은 유지하고 이미지 교체만 중단합니다.</small>
+          </span>
+          <input id="enabled" name="enabled" type="checkbox">
+        </label>
+
+        <label class="field">
+          <span>교체 이미지 URL</span>
+          <input id="imageUrl" name="imageUrl" type="url" placeholder="https://example.com/image.jpg">
+          <small>비워두면 확장에 포함된 기본 이미지를 사용합니다.</small>
+        </label>
+
+        <section class="option-list" aria-label="교체 옵션">
+          <label>
+            <input id="replaceFavicon" name="replaceFavicon" type="checkbox">
+            <span>favicon 교체</span>
+          </label>
+          <label>
+            <input id="replaceInlineBackgrounds" name="replaceInlineBackgrounds" type="checkbox">
+            <span>inline background-image 교체</span>
+          </label>
+          <label>
+            <input id="replacePseudoBackgrounds" name="replacePseudoBackgrounds" type="checkbox">
+            <span>::before / ::after background-image 교체</span>
+          </label>
+          <label>
+            <input id="replaceSvg" name="replaceSvg" type="checkbox">
+            <span>SVG 교체</span>
+          </label>
+        </section>
+
+        <label class="field">
+          <span>제외 도메인</span>
+          <textarea id="excludedDomains" name="excludedDomains" rows="4" placeholder="youtube.com&#10;example.com"></textarea>
+          <small>한 줄에 하나씩 입력합니다. 하위 도메인도 함께 제외됩니다.</small>
+        </label>
+
+        <div class="actions">
+          <button type="button" id="reset-button" class="secondary">기본값으로 복원</button>
+          <button type="submit" class="primary">저장</button>
+        </div>
+
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+      </form>
+    </main>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
